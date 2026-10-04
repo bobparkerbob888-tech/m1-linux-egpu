@@ -1,0 +1,8 @@
+{
+  "file_audit": "passed",
+  "source_only": true,
+  "known_identity_and_reversed_word_scan": "passed",
+  "uuid_private_address_home_private_key_scan": "passed",
+  "private_generated_byte_arrays": "replaced by explicit provisioning errors",
+  "not_live_validated_after_redaction": true
+}

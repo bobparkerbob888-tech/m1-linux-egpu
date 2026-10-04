@@ -1,0 +1,20 @@
+Verified five-GPU native mining baseline — 4 October 2026
+
+Five RTX 5060 Ti GPUs on original M1 J293, official ARM64 KRig 1.5.6.
+At approximately 871 seconds of mining: 436.46 TH/s aggregate, 81 C maximum.
+All five miner API entries submitted accepted shares: 3 / 9 / 7 / 9 / 8,
+with zero rejected shares. Physical compute contexts verified on all five UUIDs.
+Recovery guard acknowledged before its original deadline; no pending guard reboot.
+
+Baseline configuration: 150 W cap per GPU, 85 C thermal cutoff, fail-closed VPN.
+This baseline is not the final efficiency tune; tuning measurements follow
+separately. The result proves native compute on this exact topology, not
+generalized hotplug/display support or support for another Mac model.
+
+Saved 5060 Ti efficiency profile applied to all five through supported NVML:
++400 MHz graphics offset; requested graphics range210–2550 MHz;150 W cap;
+memory unchanged;85 C cutoff retained. Same official miner PID throughout.
+Settled sample: 439.76 TH/s, 574.59 W total GPU telemetry, temperatures70–73 C.
+Baseline435.02 TH/s at749.98 W. No observed rejected/stale shares or kernel GPU faults.
+GPU watts are not wall-meter consumption. This is a short run, not an endurance test.
+Settings are saved; no new automatic boot/miner startup service was installed.

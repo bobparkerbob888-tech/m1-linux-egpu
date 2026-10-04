@@ -1,0 +1,8 @@
+Private hardware constants have been replaced with PROVISION_PRIVATE_ID_N and
+PROVISION_TARGET_UUID tokens. Two generated DT/guard data headers intentionally
+stop compilation with #error. Do not substitute zeroes or remove identity checks.
+An operator must collect and review the target's enclosure identities, GPU DSNs,
+controller routes, resource windows, DART and MSI ownership, then generate the
+headers/policy and run a fresh guarded cold-boot validation. There is no public
+machine profile or generic identity bypass. This release is reviewable source,
+not a ready-to-boot kernel or universal installer.

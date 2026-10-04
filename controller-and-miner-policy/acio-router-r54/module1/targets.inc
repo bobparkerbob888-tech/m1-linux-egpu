@@ -1,0 +1,6 @@
+"/soc/mailbox@501100000",
+"/soc/pinctrl@24a820000/acio1-pins",
+"/soc/i2c@235010000/usb-pd@3f/connector/ports/port@2",
+"/soc/cio@501ac0000/iommu@a80000",
+"/soc/cio@501ac0000/nhi@f00000",
+"/soc/cio@501ac0000",

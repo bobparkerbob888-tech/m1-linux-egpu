@@ -1,0 +1,7 @@
+"/soc/mailbox@381100000",
+"/soc/reset-controller@23b784000",
+"/soc/pinctrl@24a820000/acio0-pins",
+"/soc/i2c@235010000/usb-pd@38/connector/ports/port@2",
+"/soc/cio@381ac0000/iommu@a80000",
+"/soc/cio@381ac0000/nhi@f00000",
+"/soc/cio@381ac0000",

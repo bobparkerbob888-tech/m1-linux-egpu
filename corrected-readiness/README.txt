@@ -1,0 +1,1 @@
+Corrected readiness parser enforces causal partial ordering across asynchronous worker/caller logs. This is the future reusable parser; the original successful boot used a separately reviewed continuation. Source is provided for review, not a live activation command.

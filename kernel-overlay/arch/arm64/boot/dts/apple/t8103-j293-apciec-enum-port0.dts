@@ -1,0 +1,3 @@
+// Local one-port experimental test; runtime opt-in also required.
+#include "t8103-j293-apciec-enum.dts"
+&apciec0_enum { status = "okay"; };

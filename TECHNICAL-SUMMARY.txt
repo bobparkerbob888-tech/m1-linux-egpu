@@ -1,0 +1,25 @@
+Technical scope of the J293 R54 experiment
+
+Hardware: Apple M1 J293, five NVIDIA RTX 5060 Ti devices, two USB4 root
+controllers, a three-device branch and a two-device branch with daisy chains.
+Software: Ubuntu 26.04 ARM64, custom Asahi-derived Linux 7.3.0-rc1 R54,
+16 KiB host pages, adapted NVIDIA 615.71.09 modules, official ARM64 KRig 1.5.6.
+
+Key work areas
+- Native external PCIe host registration after Apple controller preparation.
+- Nonposted MMIO mappings and the native power/reset sequencing contract.
+- PCI resource ownership and branch windows, retaining standard BAR discovery.
+- Per-endpoint DART/IOMMU ownership and shared MSI-domain allocation.
+- Thunderbolt/USB4 controller/tunnel readiness and retained DMA ownership.
+- Native NVIDIA 16 KiB page/DMA adaptation and exact ABI matching.
+- Asynchronous readiness proof: causal ordering rather than total log ordering.
+
+Current limitations
+Exact identities/topology remain in experimental policy. No general hotplug,
+suspend/resume, display or gaming support is demonstrated. J314s/M1 Pro needs
+its own port. A public installer must replace private policy with reviewed
+hardware discovery and regenerate the boot/recovery chain. Mining API PCI
+addresses omit domains and cannot uniquely identify cards with the same bus
+address on different controllers; physical NVML context proof is also required.
+
+This is a local summary draft, not an upstream acceptance claim.

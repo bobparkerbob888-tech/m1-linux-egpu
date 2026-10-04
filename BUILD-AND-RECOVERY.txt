@@ -1,0 +1,50 @@
+Source reconstruction (Python 3.12+)
+
+Extract all attached parts into the SAME directory, preserving their paths.
+Run:
+  python3 reconstruct.py
+
+Obtain the two exact upstream source archives identified in UPSTREAM.json.
+Suggested source URLs (download/read only):
+  https://github.com/AsahiLinux/linux/archive/9fc41c8f69dd656d81416dc18ab2a1f040e1c410.tar.gz
+  https://github.com/NVIDIA/open-gpu-kernel-modules/archive/61dcc93722ecb418bb5f2e00923f05b4b8051dd1.tar.gz
+
+Reconstruct either component offline:
+  python3 reconstruct.py --component kernel --upstream-tar linux-source.tar.gz --output kernel-review
+  python3 reconstruct.py --component nvidia --upstream-tar nvidia-source.tar.gz --output nvidia-review
+The tools require exact archive checksums and a new output directory. They do
+not download, install, modify an existing tree, initialize hardware or reboot.
+
+Building after target identity provisioning
+Use an ARM64 compiler with a matching Linux configuration and 16 KiB pages.
+A sanitized reference kernel config is included as kernel.config. Copy it to
+a separate build directory, run olddefconfig, then build Image, modules and
+the J293 DTB with ARCH=arm64 and CROSS_COMPILE=aarch64-linux-gnu-.
+
+The original kernel release was 7.3.0-rc1-j293-router-r54. Sources and ABI must
+match the NVIDIA module build. Rebuild both the NVIDIA adapted core and kernel
+interface from the provided NVIDIA delta plus official upstream. Match the
+NVIDIA userspace version exactly (615.71.09). A newer random driver package
+is not an equivalent replacement. Full portable end-to-end rebuilding and
+installation have not been validated from this sanitized public kit.
+
+Guarded deployment outline for developers
+1. Preserve stock firmware, boot entries, working SSH, power and thermal policy.
+2. Collect the target's fresh ADT/controller/enclosure/GPU identities and review
+   resource windows, MSI allocation and DART ownership; provision source policy.
+3. Build and hash a new kernel, all matching modules and an initramfs containing
+   the known Wi-Fi path and watchdog. Do not reuse a private machine's initramfs.
+4. Prepare a one-shot boot entry and finite watchdog recovery to stock; confirm
+   actual SSH recovery before experimental external-device activation.
+5. Activate each controller once, prove resources/identity/DMA ownership, then
+   initialize the NVIDIA driver once. No warm reset/retry or owner release.
+6. For mining, use an independently acquired official miner and your own account.
+   Require fail-closed VPN routing and thermal protection, then verify accepted
+   shares for every API entry plus physical UUID compute contexts. API PCI bus
+   labels omit domains and may not uniquely identify cards across controllers.
+7. Acknowledge the recovery guard only after real hardware/mining validation.
+
+The source includes exact-topology assumptions. Other Mac models/enclosure
+layouts need a reviewed port, not changing the model string. A userspace guard
+cannot recover every early firmware/kernel hang; physical recovery remains
+necessary for some failures.
