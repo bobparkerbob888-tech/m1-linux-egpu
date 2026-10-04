@@ -1,12 +1,12 @@
 # Native Linux NVIDIA eGPU compute on Apple M1
 
-Experimental source from a five-RTX-5060-Ti setup on a **2020 M1 MacBook Pro (J293)** running Ubuntu Asahi.
+Experimental source from a five-RTX-5060-Ti setup on a **2020 M1 MacBook Pro (J293)** running Ubuntu Asahi. The workload is **Pearl (PRL) mining on the Kryptex pool**, using the official ARM64 KRig 1.5.6 miner.
 
 **This is a developer source-review release, not a one-click installer.** The working private build produced the results below. The public source has hardware identifiers and generated machine-specific headers removed; it has not been compiled or boot-tested after that redaction.
 
 ## Measured result
 
-- Five physical NVIDIA GPUs running the unmodified official ARM64 Kryptex KRig 1.5.6 miner, with accepted PRL shares on every miner device.
+- Five physical NVIDIA GPUs running the unmodified official ARM64 Kryptex KRig 1.5.6 miner, with accepted Pearl (PRL) shares on every miner device.
 - Approximately **440 TH/s at 575 W combined GPU telemetry**, with temperatures **70–73°C** after tuning. GPU consumption is not wall power.
 - Short-run verification, not an endurance test.
 - Three GPUs on one USB4 controller and two on the other, including daisy chains.
