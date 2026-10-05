@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-05",
+  "model": "MacBookPro18,3 / J314s / T6000",
+  "kernel": "7.3.0-rc1-j314s-all9-r35",
+  "driver": "615.71.09",
+  "miner": "official KRig 1.5.6 ARM64",
+  "algorithm": "PRL",
+  "gpu_layout": {
+    "controller_0": [
+      "RTX 5060 Ti",
+      "RTX 5060 Ti",
+      "RTX 5060 Ti",
+      "RTX 5060 Ti"
+    ],
+    "controller_1": [
+      "RTX 5080",
+      "RTX 5090 Laptop GPU",
+      "RTX 5090 Laptop GPU",
+      "RTX 5090 Laptop GPU",
+      "RTX 5090 Laptop GPU"
+    ]
+  },
+  "snapshot_duration_seconds_approx": 270,
+  "total_hashrate_H_per_second": 1043993759245290.8,
+  "accepted_per_card": [
+    5,
+    6,
+    2,
+    2,
+    8,
+    4,
+    2,
+    1,
+    3
+  ],
+  "accepted_total": 33,
+  "rejected": 0,
+  "stale": 0,
+  "maximum_temperature_C": 79,
+  "vpn_fail_closed_verified": true,
+  "thermal_cutoff_C": 85,
+  "scope": "Original private R35 hardware run. Sanitized public source not built or live-validated."
+}

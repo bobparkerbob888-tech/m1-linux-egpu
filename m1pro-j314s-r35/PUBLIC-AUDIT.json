@@ -1,0 +1,24 @@
+{
+  "file_audit": "passed",
+  "source_only": true,
+  "frozen_R35_source_files_verified": 155,
+  "known_identity_and_reversed_word_scan": "passed",
+  "uuid_private_address_home_private_key_scan": "passed",
+  "private_generated_byte_arrays": "replaced by explicit provisioning errors",
+  "nvidia_core_object_bit_reproducibility_verified": false,
+  "nvidia_new_interface_files": [
+    "kernel-open/nvidia/nv-j314s-owner.h",
+    "kernel-open/nvidia/nv-j314s-probe-serial.h"
+  ],
+  "not_compiled_or_live_validated_after_redaction": true,
+  "excluded": [
+    "raw kernel Image",
+    "DTB",
+    "initramfs",
+    "module binaries",
+    "firmware",
+    "mining and VPN credentials",
+    "boot tokens",
+    "raw journals and hardware snapshots"
+  ]
+}

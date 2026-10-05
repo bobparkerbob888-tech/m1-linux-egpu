@@ -1,0 +1,47 @@
+// SPDX-License-Identifier: GPL-2.0+ OR MIT
+// LOCAL REVIEW CANDIDATE: disabled host, no NVIDIA/DMA drivers, not deployed.
+// Physical ranges from official J29322G74 ADT. Retail64SID layout must be checked.
+#include "t8103-j293.dts"
+
+&{/soc} {
+	apciec0_enum: apciec@3b0000000 {
+		compatible = "research-only,apple-t8103-apciec-disabled";
+		reg = <0x3 0xb0000000 0x0 0x10000000>,
+		      <0x3 0xa0000000 0x0 0x4000>,
+		      <0x3 0xa1000000 0x0 0x8000>,
+		      <0x3 0xa0004000 0x0 0x4000>,
+		      <0x3 0xa0200000 0x0 0x4000>;
+		reg-names = "ecam", "common", "port", "fabric", "debug";
+		bus-range = <0 255>;
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+		power-domains = <&ps_atc0_usb_aon>, <&ps_atc0_pcie>;
+		power-domain-names = "apciec-core", "apciec-port";
+		research,rid-entries = <64>;
+		research,external-dart = <&dart_apciec0_enum>;
+		status = "disabled";
+
+		// Created only by host AFTER supplierpowerget, BEFORE PERST release.
+		// No iommu-map and no DMA client links: all streams remain blocked.
+		dart_apciec0_enum: iommu@3a1008000 {
+			compatible = "apple,t8103-usb4-dart";
+			reg = <0x3 0xa1008000 0x0 0x4000>;
+			interrupt-parent = <&aic>;
+			interrupts = <AIC_IRQ 0x303 IRQ_TYPE_LEVEL_HIGH>;
+			#iommu-cells = <1>;
+			status = "okay";
+		};
+	};
+};
+
+// Same-NHI ADT PrtC relationship; callback validates unique root PCIe-down port.
+&usb4_0_nhi {
+	research,apciec-host = <&apciec0_enum>;
+};
+
+// Target's existing EFI partition: required by stock99asahi-firmware hook.
+// This is stable filesystem identity, not a copied physical-memory reservation.
+&{/chosen} {
+	asahi,efi-system-partition = "PROVISION_TARGET_UUID";
+};

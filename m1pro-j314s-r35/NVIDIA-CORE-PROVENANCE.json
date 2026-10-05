@@ -1,0 +1,8 @@
+{
+  "reused_R35_core_sha256": "f7af27da3d1edf7665eecc8eba69f3215c4ad360abe4f8b9677b9760509d587f",
+  "archived_core_match": true,
+  "archived_build_returncode": 0,
+  "diagnostic_source": "nvidia-overlay/src/nvidia/src/kernel/gpu/bus/kern_bus_vbar2.c",
+  "diagnostic_source_sha256": "c91e6009bc0648dfb7514d40159f77048f1cbe4e55fb1d554e3f6e111eca97f5",
+  "scope": "Archived source/build identity match; no clean public rebuild or post-redaction live validation claimed."
+}
